@@ -1,0 +1,14 @@
+
+<table>
+	<%= @cart.lineitems.each do |item| %>
+	<tr>
+		<td><%= item.quantity %>&times; </td>
+		<td><%= item.product.title %></td>
+	</tr>
+	<% end %>
+</table>
+<center>
+<%= button_to "Continue Shopping", root_path, :class => 'btn btn-default', :method => :get %><br />
+<%= button_to "Empty Cart", @cart, method: :delete, :class => 'btn btn-default' , confirm: "Are you sure?" %><br />
+<%= button_to "Go to Checkout", new_order_path, :class => 'btn btn-default' , :method => :get %>
+</center>

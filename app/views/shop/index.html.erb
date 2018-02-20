@@ -1,0 +1,16 @@
+<div id="search">
+	<%= render 'search' %>
+</div>
+<h1>Products for Sale</h1>
+<% if !@products.empty? %>
+	<% @products.each do |product| %>
+		<%= image_tag(product.poster, :size => "50x50") %>
+		<h3><%= product.title %></h3>
+		<%= sanitize(product.description) %>
+		<%= euro(product.price) %>
+		<%= button_to "Add to cart", lineitems_path(product_id: product) %>
+		
+	<% end %>
+<% else %>
+	<p>There are no products for sale</p>
+<% end %>

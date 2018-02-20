@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.customer.name %>
+</p>
+
+<p>
+  <strong>Paymethod:</strong>
+  <%= @order.paymethod %>
+</p>
+
+<p><strong>Items in the Order</strong><br />
+	<% @order.lineitems.each do |item| %>
+	<%= item.product.title %>&times; <%= item.quantity %>
+	<%= euro(item.product.price) %><br />
+	<% end %>
+</p>
+
+<p>
+  <strong>Total Price:</strong>
+  <%= euro(@order.total)%>
+</p>
+

@@ -1,0 +1,16 @@
+<h1>Log in</h1>
+	<%= form_tag do %>
+		<table>
+		<tr>
+			<td><%= label_tag :email %>
+			<td><%= text_field_tag :email %></td>
+		</tr>
+		<tr>
+			<td><%= label_tag :password %>
+			<td><%= password_field_tag :password %></td>
+		</tr>
+		<tr>
+			<td><%= submit_tag "Log In", :class => "btn btn-large btn-primary"  %></td>
+		</tr>
+		</table>
+	<% end %>

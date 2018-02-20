@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <header class="navbar navbar" role="navigation">
+      <div class="navbar-inner">
+        <div class="container">
+          <nav class="collapse navbar-collapse navbar-ex1-collapse">
+
+
+  			<ul class="nav navbar-nav navbar-right ">
+
+  				<% if !logged_in? %>
+  					<%= link_to "Sign In", login_path %>
+  				<% else %>
+  					Signed in as <%= @current_user.name %>
+  					<%= link_to "Sign Out", logout_path %>
+  				<% end %>
+  			</ul>
+        </nav>
+        </div>
+      </div>
+    </header>
+
+  <% flash.each do |key, value| %>
+    <%= content_tag(:p, value, :class => "flash #{key}") %>
+  <% end %>
+
+  <div id="side">
+   <div id="cart">
+  	<% if @cart %>
+  		<%= render @cart %>
+  	<% end %>
+   </div>
+  </div>
+
+  <div id="wrapper">
+  	<%= yield %>
+	<%= render "layouts/footer" %>	
+  </div>
+
+  </body>
+  </html>
